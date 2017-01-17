@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:bricewge/libft.git
+	branch = master
+	commit = c5f2907220e83058c263ef0e796cad133cde1e9f
+	parent = bce2fd1dc82812421996ad7005269362e7e2efb3
+	cmdver = 0.3.1

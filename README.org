@@ -1,0 +1,5 @@
+* get_next_line
+** return
+- 1: A lign has been read
+- 0: End of the read
+- -1: An error occured

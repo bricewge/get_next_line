@@ -3,3 +3,9 @@
 - 1: A lign has been read
 - 0: End of the read
 - -1: An error occured
+
+** BUFF_SIZE
+Changing the =BUFF_SIZE= to a very big value, ex. =10000000=, make the program
+SEGFAULT because the default size of the stack is only =8192000= byte (=ulimit
+-Sa=) so the stack oxplodes. To use the previous =BUFF_SIZE= you can change the
+size of the stack to =10000000= byte with =ulimit -s 10000=.

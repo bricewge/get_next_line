@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 11:44:31 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/18 19:36:22 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/19 19:19:31 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,33 @@ void	store_rest(char *str, char **rest)
 
 int		get_next_line(const int fd, char **line)
 {
-	int				byte_read;
+	int				ret;
 	char			*end_line;
 	char			buf[BUF_SIZE + 1];
 	static	char	*rest = "";
 
 	if (fd < 0 || !line)
 		return (-1);
+	*line = ft_strnew(0);
 	if (*rest)
 	{
 		if ((end_line = ft_strchr(rest, '\n')))
 		{
 			*end_line = '\0';
-			store_rest(++end_line, &rest);
 			*line = ft_strjoin(*line, rest);
-			rest = "";
+			store_rest(++end_line, &rest);
+			if (!ft_strchr(rest, '\n'))
+				rest = "";
 			return (1);
 		}
 		else
 			*line = ft_strjoin(*line, rest);
+		if (!ft_strchr(rest, '\n'))
+			rest = "";
 	}
-	else
-		*line = ft_strnew(0);
-	while ((byte_read = read(fd, buf, BUF_SIZE)) > 0)
+	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
-		buf[byte_read] = '\0';
+		buf[ret] = '\0';
 		if ((end_line = ft_strchr(buf, '\n')))
 		{
 			*end_line = '\0';
@@ -61,5 +63,5 @@ int		get_next_line(const int fd, char **line)
 		}
 		*line = ft_strjoin(*line, buf);
 	}
-	return (byte_read);
+	return (ret);
 }

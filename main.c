@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 13:24:59 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/19 18:25:12 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/20 13:36:23 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,17 @@ int		main(int argc, char **argv)
 			fd = 0;
 		else
 			fd = open(argv[1], O_RDONLY);
-		while ((result = get_next_line(fd, &line)) > 0)
+		while ((result = get_next_line(fd, &line)) >= 0)
 		{
-			ft_putchar('(');
 			ft_putnbr(result);
-			ft_putchar(')');
+			ft_putstr(": ");
 			ft_putstr(line);
+			ft_putchar('\n');
+			if (result == 0)
+			{
+				close (fd);
+				return (0);
+			}
 		}
 		close (fd);
 	}

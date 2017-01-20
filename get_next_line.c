@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 11:44:31 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/19 19:19:31 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/20 16:18:51 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		get_next_line(const int fd, char **line)
 	if (fd < 0 || !line)
 		return (-1);
 	*line = ft_strnew(0);
+	/* ret = 0; */
 	if (*rest)
 	{
 		if ((end_line = ft_strchr(rest, '\n')))
@@ -43,13 +44,13 @@ int		get_next_line(const int fd, char **line)
 			*line = ft_strjoin(*line, rest);
 			store_rest(++end_line, &rest);
 			if (!ft_strchr(rest, '\n'))
-				rest = "";
+				*rest = '\0';
 			return (1);
 		}
 		else
 			*line = ft_strjoin(*line, rest);
 		if (!ft_strchr(rest, '\n'))
-			rest = "";
+			*rest = '\0';
 	}
 	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
@@ -61,7 +62,14 @@ int		get_next_line(const int fd, char **line)
 			*line = ft_strjoin(*line, buf);
 			return (1);
 		}
+		else if (ret != BUF_SIZE)
+		{
+			*line = ft_strjoin(*line, buf);
+			return (1);
+		}
 		*line = ft_strjoin(*line, buf);
 	}
+	if (**line && ret == 0)
+		return (1);
 	return (ret);
 }

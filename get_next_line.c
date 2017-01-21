@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 11:44:31 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/21 14:14:21 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/21 17:56:27 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		get_next_line(const int fd, char **line)
 {
 	int				ret;
 	char			*end_line;
-	char			buf[BUF_SIZE + 1];
+	char			buf[BUFF_SIZE + 1];
 	static	char	*rest = "";
 
 	if (fd < 0 || !line)
@@ -51,7 +51,7 @@ int		get_next_line(const int fd, char **line)
 	*line = ft_strnew(0);
 	if (use_rest(line, &rest, &end_line))
 		return (1);
-	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
+	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
 		if ((end_line = ft_strchr(buf, '\n')))

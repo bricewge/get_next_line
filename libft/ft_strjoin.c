@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/26 14:39:21 by bwaegene          #+#    #+#             */
-/*   Updated: 2016/12/26 15:02:59 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/21 12:49:21 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	{
 		len1 = ft_strlen((char *)s1);
 		len2 = ft_strlen((char *)s2);
-		result = (char *)malloc(sizeof(*result) * len1 + len2);
+		result = (char *)malloc(sizeof(*result) * (len1 + len2 + 1));
 		if (result)
 		{
 			result[len1 + len2] = '\0';

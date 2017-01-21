@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/16 20:40:18 by bwaegene          #+#    #+#             */
-/*   Updated: 2016/12/29 10:48:26 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/21 13:56:24 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,6 @@ void					ft_swap(int *a, int *b);
 void					ft_strswap(char **a, char **b);
 int						*ft_range(int min, int max);
 int						ft_sqrt(int nb);
+
+char					*ft_strjoinf(char const *s1, char const *s2, int nb);
 #endif

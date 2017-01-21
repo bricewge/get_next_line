@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 13:24:59 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/20 13:36:23 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/21 14:19:19 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int		main(int argc, char **argv)
 			ft_putchar('\n');
 			if (result == 0)
 			{
-				close (fd);
+				close(fd);
 				return (0);
 			}
 		}
-		close (fd);
+		close(fd);
 	}
 	else
 		return (1);

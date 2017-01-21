@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 11:44:31 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/20 16:18:51 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/20 19:05:07 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 void	store_rest(char *str, char **rest)
 {
-	int				len;
-
-	len = ft_strlen(str);
-	/* if (*rest) */
-	/* 	free(*rest); */
 	if (*str)
 		*rest = ft_strdup(str);
 }
@@ -32,10 +27,11 @@ int		get_next_line(const int fd, char **line)
 	char			buf[BUF_SIZE + 1];
 	static	char	*rest = "";
 
+	// Protections contre parametres invalides
 	if (fd < 0 || !line)
 		return (-1);
 	*line = ft_strnew(0);
-	/* ret = 0; */
+	// Il reste des chars du read precedent a afficher
 	if (*rest)
 	{
 		if ((end_line = ft_strchr(rest, '\n')))
@@ -43,7 +39,7 @@ int		get_next_line(const int fd, char **line)
 			*end_line = '\0';
 			*line = ft_strjoin(*line, rest);
 			store_rest(++end_line, &rest);
-			if (!ft_strchr(rest, '\n'))
+			if (ft_strequ(rest, *line))
 				*rest = '\0';
 			return (1);
 		}
@@ -62,13 +58,9 @@ int		get_next_line(const int fd, char **line)
 			*line = ft_strjoin(*line, buf);
 			return (1);
 		}
-		else if (ret != BUF_SIZE)
-		{
-			*line = ft_strjoin(*line, buf);
-			return (1);
-		}
 		*line = ft_strjoin(*line, buf);
 	}
+	// On est arrive a la fin du fichier
 	if (**line && ret == 0)
 		return (1);
 	return (ret);

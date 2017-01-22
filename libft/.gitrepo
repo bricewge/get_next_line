@@ -6,6 +6,6 @@
 [subrepo]
 	remote = git@github.com:bricewge/libft.git
 	branch = master
-	commit = c5f2907220e83058c263ef0e796cad133cde1e9f
-	parent = bce2fd1dc82812421996ad7005269362e7e2efb3
+	commit = 47be458373c0b08ea7f4ad094c19844e6da8ce74
+	parent = f0a894a85b3439c32518d7633987f860daef9cb9
 	cmdver = 0.3.1

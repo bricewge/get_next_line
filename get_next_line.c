@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 11:44:31 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/22 15:19:06 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/22 16:56:23 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 void	store_rest(char *str, char **rest)
 {
+	char *tmp;
+
 	if (*str)
+	{
+		tmp = *rest;
 		*rest = ft_strdup(str);
+		free(tmp);
+	}
 }
 
 int		use_rest(char **line, char **rest, char **end_line)

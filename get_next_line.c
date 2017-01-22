@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 11:44:31 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/22 14:09:51 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/22 15:19:06 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int		use_rest(char **line, char **rest, char **end_line)
 			*line = ft_strjoinf(*line, *rest, 1);
 			store_rest(++(*end_line), rest);
 			if (ft_strequ(*rest, *line))
-				**rest = '\0';
+				ft_strclr(*rest);
 			return (1);
 		}
 		else
 			*line = ft_strjoinf(*line, *rest, 1);
 		if (!ft_strchr(*rest, '\n'))
-			**rest = '\0';
+			ft_strclr(*rest);
 	}
 	return (0);
 }

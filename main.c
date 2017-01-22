@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 13:24:59 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/22 14:07:47 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/22 15:11:50 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		main(int argc, char **argv)
 			ft_putnbr(result);
 			ft_putstr(": ");
 			ft_putstr(line);
+			free(line);
 			if (result == 0)
 			{
 				close(fd);

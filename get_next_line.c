@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 11:44:31 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/22 16:56:23 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/23 14:07:24 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		get_next_line(const int fd, char **line)
 	char			buf[BUFF_SIZE + 1];
 	static	char	*rest[OPEN_MAX];
 
-	if (fd < 0 || !line)
+	if (fd < 0 || !line || (fd > OPEN_MAX))
 		return (-1);
 	*line = ft_strnew(0);
 	if (use_rest(line, &rest[fd], &end_line))

@@ -6,7 +6,7 @@
 /*   By: bwaegene <bwaegene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 13:24:59 by bwaegene          #+#    #+#             */
-/*   Updated: 2017/01/22 15:11:50 by bwaegene         ###   ########.fr       */
+/*   Updated: 2017/01/23 14:10:28 by bwaegene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 int		main(int argc, char **argv)
 {
 	int		fd;
+	int		fd2;
 	char	*line;
 	int		result;
 
@@ -24,10 +25,16 @@ int		main(int argc, char **argv)
 	{
 		line = NULL;
 		if (argc == 1)
+		{
 			fd = 0;
+			fd2 = 0;
+		}
 		else
+		{
 			fd = open(argv[1], O_RDONLY);
-		while ((result = get_next_line(fd, &line)) >= 0)
+			fd2 = dup2(fd, 1000);
+		}
+		while ((result = get_next_line(fd2, &line)) >= 0)
 		{
 			ft_putnbr(result);
 			ft_putstr(": ");
